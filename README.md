@@ -28,8 +28,13 @@ Besides primary idea of composition api, to de-couple and organize business logi
 
 ## Data layer
 HTTP communication is done using Axios as HTTP client of choice, with abstractions in form of singleton API services.
+  
+Services are using generics to map response to the appropriate model.
+  
+DTOs are utilized to ensure that proper payload will be sent to the API services.
 > Take a look at `src/services/api`, `BaseApiService` is a generic base class which all other services are inheriting.
-
+  
+> Models are defined in `src/models`, DTOs in `src/dto`.
 # Linting
 Eslint + Prettier
 
