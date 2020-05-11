@@ -1,0 +1,21 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+      - name: Creating .env from .env.example
+        run: cp .env.example .env
+      - name: Installing project dependencies
+        run: yarn
+      - name: Building the project
+        run: yarn build
+      - name: Running unit and e2e tests
+        run: yarn test:unit && yarn test:e2e --headless
